@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Census Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+        .stats, .actions {
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+        .stats h2, .actions h2 {
+            color: #4CAF50;
+        }
+        .stats div {
+            background: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .actions a {
+            display: inline-block;
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .actions a:hover {
+            background-color: #45a049;
+        }
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <main>
+        <section class="stats">
+            <h2>Population Statistics</h2>
+            <div>
+                <p><strong>Total Population:</strong> 0</p>
+                <p><strong>Male:</strong> 0 | <strong>Female:</strong> 0 | <strong>Others:</strong> 0</p>
+                <p><strong>Age Groups:</strong> Children (0) | Adults (0) | Seniors (0)</p>
+            </div>
+        </section>
+        <section class="actions">
+            <h2>Manage Census Data</h2>
+            <a href="add_citizen.html">Add Citizen</a>
+            <a href="view_citizens.html">View All Citizens</a>
+            <a href="search_citizen.html">Search Citizen</a>
+            <a href="index.html">Logout</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Census Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

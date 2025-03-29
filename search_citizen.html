@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Citizen - Census Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        form input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form button {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        table th, table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Search Citizen</h1>
+    </header>
+    <main>
+        <form id="searchForm">
+            <label for="search-term">Enter Name or ID:</label>
+            <input type="text" id="search-term" placeholder="Search by Name or ID">
+            <button type="submit">Search</button>
+        </form>
+        
+        <!-- Table to display search results -->
+        <table id="citizenTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Occupation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated dynamically -->
+            </tbody>
+        </table>
+        
+        <a href="dashboard.html" class="back-link">Back to Dashboard</a>
+    </main>
+
+    <script>
+        // Sample citizen data
+        const citizens = [
+            { id: 1, name: "John Doe", age: 30, gender: "Male", address: "123 Main St", occupation: "Engineer" },
+            { id: 2, name: "Jane Smith", age: 25, gender: "Female", address: "456 Elm St", occupation: "Doctor" },
+            { id: 3, name: "Alice Brown", age: 40, gender: "Female", address: "789 Oak St", occupation: "Teacher" },
+            { id: 4, name: "Bob White", age: 35, gender: "Male", address: "101 Pine St", occupation: "Artist" }
+        ];
+
+        // Function to display citizens in the table
+        function displayCitizens(filteredCitizens) {
+            const tableBody = document.querySelector("#citizenTable tbody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            filteredCitizens.forEach(citizen => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${citizen.id}</td>
+                    <td>${citizen.name}</td>
+                    <td>${citizen.age}</td>
+                    <td>${citizen.gender}</td>
+                    <td>${citizen.address}</td>
+                    <td>${citizen.occupation}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to handle the search
+        function handleSearch(event) {
+            event.preventDefault();
+            const searchTerm = document.getElementById("search-term").value.toLowerCase();
+
+            // Filter citizens based on search term
+            const filteredCitizens = citizens.filter(citizen => 
+                citizen.name.toLowerCase().includes(searchTerm) || citizen.id.toString().includes(searchTerm)
+            );
+
+            displayCitizens(filteredCitizens);
+        }
+
+        // Set up the search form submit event
+        document.getElementById("searchForm").addEventListener("submit", handleSearch);
+
+        // Initially display all citizens
+        displayCitizens(citizens);
+    </script>
+</body>
+</html>
